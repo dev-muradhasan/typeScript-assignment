@@ -68,8 +68,8 @@ interface Course {
     isPublished: boolean,
 }
 
-const getPopularCourses = (courses: Course[], minStudents:number): Course[] => {
-    const popularCourses: Course[] = courses.filter((course: Course)=>{
+const getPopularCourses = (courses: Course[], minStudents: number): Course[] => {
+    const popularCourses: Course[] = courses.filter((course: Course) => {
         return course.isPublished === true && course.students >= minStudents
     })
     return popularCourses
@@ -80,10 +80,10 @@ const getPopularCourses = (courses: Course[], minStudents:number): Course[] => {
 
 
 
-const pluckValues = <T, K extends keyof T>(items: T[], key: K): T[K][] =>{
+const pluckValues = <T, K extends keyof T>(items: T[], key: K): T[K][] => {
     const result: T[K][] = [];
 
-    for (const item of items){
+    for (const item of items) {
         result.push(item[key])
     }
 
@@ -100,7 +100,7 @@ class Employee {
     protected name: string;
     private baseSalary: number;
 
-    constructor(name:string, baseSalary: number){
+    constructor(name: string, baseSalary: number) {
         this.name = name;
         this.baseSalary = baseSalary;
     }
@@ -110,10 +110,10 @@ class Employee {
     }
 }
 
-class Manager extends Employee{
+class Manager extends Employee {
     private department: string;
 
-    constructor(name: string, baseSalary: number, department: string){
+    constructor(name: string, baseSalary: number, department: string) {
         super(name, baseSalary)
         this.department = department
     }
@@ -124,7 +124,21 @@ class Manager extends Employee{
 }
 
 
-const manager = new Manager("Alice", 50000, "Engineering");
-console.log(manager.getDetails());
-console.log(manager.getRoleInfo());
+
+
+
+
+const validateAgeAsync = (age: number): Promise<string> => {
+    return new Promise<string>((resolve, reject) => {
+        if (age < 18) {
+            reject(new Error("Access Denied: Must be 18 or older"))
+        } else {
+            setTimeout(() => {
+                resolve("Access Granted")
+            }, 1000);
+        }
+    })
+}
+
+
 

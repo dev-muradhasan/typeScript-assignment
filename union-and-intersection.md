@@ -2,11 +2,11 @@
 
 ## Introduction
 
-TypeScript provides powerful features for defining flexible and reusable types. Two important features are Union Types (`|`) and Intersection Types (`&`). Union Types allow a value to have one of several possible types, while Intersection Types combine multiple types into a single type.
+TypeScript has many useful features. Union Types and Intersection Types are two of them. They help us create flexible types. Union Types use the `|` symbol, and Intersection Types use the `&` symbol.
 
-## Understanding Union Types
+## 1. Union Type
 
-A Union Type allows a variable to accept more than one type. For example:
+A Union Type allows a variable to have more than one possible type. We use the `|` symbol to create a Union Type.
 
 ```ts
 type ID = string | number;
@@ -17,11 +17,11 @@ userId = 101;
 userId = "USER-101";
 ```
 
-Here, `userId` can store either a string or a number. This is useful when an application supports different types of user IDs.
+Here, `userId` can store either a number or a string. This is useful when we need to use different types of values.
 
-## Understanding Intersection Types
+## 2. Intersection Type
 
-An Intersection Type combines multiple types. A value must contain all the properties required by those types.
+An Intersection Type combines two or more types into one type. We use the `&` symbol.
 
 ```ts
 type Person = {
@@ -29,22 +29,22 @@ type Person = {
 };
 
 type Employee = {
-    employeeId: number;
+    salary: number;
 };
 
 type Staff = Person & Employee;
 
 const staff: Staff = {
     name: "Murad",
-    employeeId: 101
+    salary: 30000
 };
 ```
 
-Here, `Staff` requires both `name` and `employeeId`.
+Here, `Staff` needs both `name` and `salary` properties.
 
-## Combining Union and Intersection Types
+## 3. Combining Union and Intersection Types
 
-We can combine both types to create more flexible data structures.
+We can use Union and Intersection Types together.
 
 ```ts
 type Admin = {
@@ -65,8 +65,8 @@ type User = {
 type Account = User & (Admin | Customer);
 ```
 
-In this example, every account must have an `id` and `name`. Additionally, it must satisfy either the `Admin` type or the `Customer` type.
+Here, every account needs an `id` and `name`. It must also be either an Admin or a Customer.
 
 ## Conclusion
 
-Union and Intersection Types make TypeScript applications more flexible and maintainable. Combining them helps developers represent real-world data structures with clear and accurate type definitions.
+Union Types allow different types of values, while Intersection Types combine multiple types. We can use both together to create useful and flexible types in TypeScript. They help us write clean and organized code.

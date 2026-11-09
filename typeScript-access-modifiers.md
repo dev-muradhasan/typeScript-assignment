@@ -1,46 +1,50 @@
-# Understanding Access Modifiers in TypeScript OOP
+# Access Modifiers in TypeScript OOP
 
 ## Introduction
 
-Access Modifiers are an important feature of Object-Oriented Programming (OOP) in TypeScript. They control how class properties and methods can be accessed. TypeScript provides four commonly used modifiers: `public`, `private`, `protected`, and `readonly`.
+Access Modifiers are used in TypeScript classes to control who can access properties and methods. TypeScript has four important modifiers: `public`, `private`, `protected`, and `readonly`. They help us control and protect data inside a class.
 
-## 1. Public Modifier
+## 1. Public
 
-The `public` modifier allows properties and methods to be accessed from anywhere, including outside the class. It is the default access modifier in TypeScript.
+The `public` modifier allows us to access a property or method from anywhere. It can be used inside and outside the class. It is the default modifier in TypeScript.
 
 ```ts
 class Person {
-    public name: string = "Murad";
+    public name = "Murad";
 }
 
 const person = new Person();
-console.log(person.name); // Murad
+console.log(person.name);
 ```
 
-## 2. Private Modifier
+Output: `Murad`
 
-The `private` modifier allows a property or method to be accessed only inside its own class. It cannot be accessed directly from outside the class or from a child class.
+## 2. Private
+
+The `private` modifier allows us to use a property only inside its own class. We cannot access it directly from outside the class.
 
 ```ts
-class BankAccount {
-    private balance: number = 5000;
+class Bank {
+    private balance = 5000;
 
     getBalance() {
         return this.balance;
     }
 }
 
-const account = new BankAccount();
-console.log(account.getBalance()); // 5000
+const bank = new Bank();
+console.log(bank.getBalance());
 ```
 
-## 3. Protected Modifier
+Output: `5000`
 
-The `protected` modifier allows access inside the same class and its child classes. However, it cannot be accessed directly from outside the class.
+## 3. Protected
+
+The `protected` modifier allows us to access a property inside its own class and its child classes. We cannot access it directly from outside.
 
 ```ts
 class Animal {
-    protected name: string = "Dog";
+    protected name = "Dog";
 }
 
 class Dog extends Animal {
@@ -50,23 +54,16 @@ class Dog extends Animal {
 }
 ```
 
-## 4. Readonly Modifier
+## 4. Readonly
 
-The `readonly` modifier allows a property to be assigned only during its declaration or inside the constructor. After initialization, its value cannot be changed.
+The `readonly` modifier means we can set a value only once. After setting the value, we cannot change it.
 
 ```ts
 class User {
-    readonly id: number;
-
-    constructor(id: number) {
-        this.id = id;
-    }
+    readonly id = 101;
 }
-
-const user = new User(101);
-console.log(user.id); // 101
 ```
 
 ## Conclusion
 
-Access Modifiers help developers control data access, protect sensitive information, and organize classes. Using them properly makes TypeScript applications more secure, maintainable, and easier to understand.
+Access Modifiers help us control data access in TypeScript. They make our code easier to manage and protect important information. Each modifier has a different purpose, so we should use them according to our needs.
